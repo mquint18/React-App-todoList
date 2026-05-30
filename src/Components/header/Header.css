@@ -1,0 +1,6 @@
+.header-image {
+    max-width: fit-content;
+    border: 3px solid black;
+    border-radius: 10px;
+    margin: 30px;
+}
