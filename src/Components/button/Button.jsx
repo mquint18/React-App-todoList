@@ -1,12 +1,12 @@
 
 
-function Button() {
+function Button({label,onButtonClick}) {
 
     return(
-    <div>
+    
 
-        <button className="clicky">Click Me!</button>
-    </div>
+        <button className="clicky" onClick={onButtonClick}>{label}</button>
+    
     )
 }
 
