@@ -1,8 +1,7 @@
 import { useState } from 'react'
 //import '/TaskList.css'
-//import '/AddTask.jsx'
-import Button from '../button/Button';
-import AddTask from './AddTask';
+
+
 
 
 function TaskList() {
@@ -10,7 +9,7 @@ function TaskList() {
     const [task, setTask] = useState("");
     const [tasks, setTasks] = useState([]);
 
-    function addTask(){
+    function AddTask(){
 
       if (task === ""){
         alert("Please enter a task");
@@ -38,11 +37,23 @@ function TaskList() {
             value = {task}
             onChange={(e)=> setTask(e.target.value)}
             />
-        <Button
-        label = "Add Task"
-        onButtonClick={AddTask}>
+        <button
+        onClick={AddTask}
+            > Add Task</button>
+       
+       <div className='tasklist'>
 
-        </Button>
+            {
+                tasks.map((item, index)=> (
+                    <div className="task" key = {index}>
+                        <p>{item}</p>
+                        <button onClick={()=> deleteTask(index)}>Remove Task</button>
+                    </div>
+                ))
+            }
+
+
+       </div>
 
 
         </div>
