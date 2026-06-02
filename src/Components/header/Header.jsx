@@ -1,6 +1,5 @@
 
-import doodle from "ToDoApp/src/assets/doodle.png"
-
+import doodle from "/Users/mquint/Desktop/bootcamp2/Week_8/ToDoApp/ToDoApp/src/assets/doodle.png"
 function Header() {
 
 
