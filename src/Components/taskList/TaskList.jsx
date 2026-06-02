@@ -1,5 +1,7 @@
-import { useState } from 'react'
-//import '/TaskList.css'
+import { useState } from 'react';
+import Button from '../button/Button';
+import Input from './Input';
+//import '/TaskList.css';
 
 
 
@@ -22,8 +24,14 @@ function TaskList() {
 
     }
 
+    function handleKeyDown(event) {
+        if (event.key === "Enter") {
+            AddTask();
+        }
+    }
+
     function deleteTask(index){
-        const updateTasks = tasks.filter((item, i) => 1 !== index);
+        const updateTasks = tasks.filter((item, i) => i !== index);
         setTasks(updateTasks);
     }
 
@@ -32,23 +40,31 @@ function TaskList() {
 
         <div className="todolist">
             <h1>My To-Dos</h1>
-            <input type="text" 
-            placeholder='Enter New Task'
-            value = {task}
-            onChange={(e)=> setTask(e.target.value)}
+
+
+           <Input
+                value={task}
+                placeholder="Enter New Task"
+                onChange={(e) => setTask(e.target.value)} 
+                onKeyDown={handleKeyDown}
             />
-        <button
-        onClick={AddTask}
-            > Add Task</button>
+
+            <Button
+                text = "Add Task"
+                onClick={AddTask}
+            />
+
        
        <div className='tasklist'>
 
-            {
-                tasks.map((item, index)=> (
+            {tasks.map((item, index)=> (
                     <div className="task" key = {index}>
                         <p>{item}</p>
-                        <button onClick={()=> deleteTask(index)}>Remove Task</button>
-                    </div>
+                        <Button
+                            text="Remove Task"
+                            onClick={()=>deleteTask(index)}
+                            />
+                        </div>
                 ))
             }
 
