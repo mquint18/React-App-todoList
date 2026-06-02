@@ -1,10 +1,10 @@
-import './Header.css'
+
 
 function Header() {
 
 
     return(
-        <div>
+        <div className='head-div'>
            
             <img src="src/assets/doodle.png" alt="ToDo List" className='header-image'/>
         </div>
