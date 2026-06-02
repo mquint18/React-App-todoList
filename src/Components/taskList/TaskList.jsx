@@ -18,7 +18,12 @@ function TaskList() {
         return;
       }
       
-      setTasks([...tasks, task]);
+      setTasks([...tasks, 
+        {
+         text: task,
+        completed: false
+        }
+            ]);
 
       setTask("");
 
@@ -29,6 +34,17 @@ function TaskList() {
             AddTask();
         }
     }
+
+
+    function toggleTask(index) {
+        const updatedTasks = [... tasks];
+
+        updatedTasks[index].completed =
+            !updatedTasks[index].completed;
+
+        setTasks(updatedTasks);
+    }
+
 
     function deleteTask(index){
         const updateTasks = tasks.filter((item, i) => i !== index);
@@ -59,7 +75,25 @@ function TaskList() {
 
             {tasks.map((item, index)=> (
                     <div className="task" key = {index}>
-                        <p>{item}</p>
+                        <p
+                            style={{
+                                textDecoration: item.completed
+                                ? "line-through"
+                                : "none"
+                            }}
+                        >
+                        {item.text}
+                        </p>
+                        <Button
+                            text={
+                                item.completed
+                                ? "Undo"
+                                : "Complete"}
+                            onClick={()=> toggleTask(index)}
+                        />
+
+
+
                         <Button
                             text="Remove Task"
                             onClick={()=>deleteTask(index)}
